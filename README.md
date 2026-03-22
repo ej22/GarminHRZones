@@ -26,9 +26,9 @@ Open [http://localhost:5050](http://localhost:5050).
 
 ```json
 {
-  "age": 35,
-  "weight_kg": 80,
-  "height_cm": 180,
+  "age": 30,
+  "weight_kg": 75,
+  "height_cm": 175,
   "resting_hr": 60,
   "formula": "standard",
   "method": "maxhr"
@@ -44,8 +44,8 @@ Open [http://localhost:5050](http://localhost:5050).
 
 ```json
 {
-  "max_hr": 185,
-  "bmi": 24.7,
+  "max_hr": 190,
+  "bmi": 24.5,
   "formula": "standard",
   "method": "maxhr",
   "zones": [
