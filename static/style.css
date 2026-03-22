@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f1117;
+    color: #e1e4e8;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.subtitle {
+    color: #8b949e;
+    margin-bottom: 2rem;
+}
+
+form {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #c9d1d9;
+}
+
+.optional {
+    font-weight: 400;
+    color: #8b949e;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #e1e4e8;
+    font-size: 0.95rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 0.65rem;
+    background: #238636;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+button:hover {
+    background: #2ea043;
+}
+
+.error {
+    background: #3d1219;
+    border: 1px solid #f85149;
+    color: #f85149;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.stat-unit {
+    font-size: 0.75rem;
+    color: #8b949e;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+th {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    background: #161b22;
+    border-bottom: 2px solid #30363d;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8b949e;
+}
+
+td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #21262d;
+}
+
+tr[data-zone="1"] td:first-child { border-left: 4px solid #3fb950; }
+tr[data-zone="2"] td:first-child { border-left: 4px solid #56d364; }
+tr[data-zone="3"] td:first-child { border-left: 4px solid #d29922; }
+tr[data-zone="4"] td:first-child { border-left: 4px solid #db6d28; }
+tr[data-zone="5"] td:first-child { border-left: 4px solid #f85149; }
+
+.garmin-boundary {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.garmin-boundary h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.garmin-hint {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-bottom: 0.75rem;
+}
+
+.boundary-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.boundary-chip {
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.boundary-chip.z1 { background: #238636; }
+.boundary-chip.z2 { background: #3d7a1f; }
+.boundary-chip.z3 { background: #9e6a03; }
+.boundary-chip.z4 { background: #bd561d; }
+.boundary-chip.z5 { background: #da3633; }
+
+.garmin-instructions {
+    margin-top: 2rem;
+}
+
+.garmin-instructions h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+details {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+}
+
+summary {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    user-select: none;
+}
+
+summary:hover {
+    background: #1c2129;
+    border-radius: 8px;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #30363d;
+}
+
+details ol {
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+details li {
+    margin-bottom: 0.4rem;
+    color: #c9d1d9;
+}
+
+.note {
+    background: #1c1d24;
+    border-left: 4px solid #d29922;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+    color: #c9d1d9;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garmin HR Zone Calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Heart Rate Zone Calculator</h1>
+        <p class="subtitle">Calculate your training zones and configure your Garmin device</p>
+
+        <form id="hr-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" min="1" max="120" required placeholder="e.g. 35">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" min="1" step="0.1" required placeholder="e.g. 80">
+                </div>
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" min="1" step="0.1" required placeholder="e.g. 180">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="resting-hr">Resting HR <span class="optional">(optional)</span></label>
+                    <input type="number" id="resting-hr" min="20" max="120" placeholder="e.g. 60">
+                </div>
+                <div class="form-group">
+                    <label for="formula">Max HR Formula</label>
+                    <select id="formula">
+                        <option value="standard">Standard (220 - age)</option>
+                        <option value="tanaka">Tanaka (208 - 0.7 &times; age)</option>
+                        <option value="manual">Manual (enter known Max HR)</option>
+                    </select>
+                </div>
+                <div class="form-group hidden" id="manual-hr-group">
+                    <label for="manual-hr">Known Max HR</label>
+                    <input type="number" id="manual-hr" min="100" max="230" placeholder="e.g. 201">
+                </div>
+                <div class="form-group">
+                    <label for="method">Zone Method</label>
+                    <select id="method">
+                        <option value="maxhr">% of Max HR</option>
+                        <option value="karvonen">% HRR (Karvonen)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="error-msg" class="error hidden"></div>
+            <button type="submit">Calculate Zones</button>
+        </form>
+
+        <div id="results" class="hidden">
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Max HR</span>
+                    <span class="stat-value" id="max-hr-value">—</span>
+                    <span class="stat-unit">bpm</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">BMI</span>
+                    <span class="stat-value" id="bmi-value">—</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Formula</span>
+                    <span class="stat-value" id="formula-value">—</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Method</span>
+                    <span class="stat-value" id="method-value">—</span>
+                </div>
+            </div>
+
+            <table id="zone-table">
+                <thead>
+                    <tr>
+                        <th>Zone</th>
+                        <th>Name</th>
+                        <th>% Range</th>
+                        <th>BPM Range</th>
+                    </tr>
+                </thead>
+                <tbody id="zone-body"></tbody>
+            </table>
+
+            <div class="garmin-boundary">
+                <h3>Garmin Zone Boundaries (lower BPM per zone)</h3>
+                <p class="garmin-hint">Garmin devices use lower-boundary values. Enter these numbers when setting custom zones:</p>
+                <div id="garmin-boundaries" class="boundary-list"></div>
+            </div>
+        </div>
+
+        <div class="garmin-instructions">
+            <h2>Configuring Zones on Your Garmin</h2>
+
+            <details>
+                <summary>Via Garmin Connect (Web / App)</summary>
+                <ol>
+                    <li>Open <strong>Garmin Connect</strong> (app or connect.garmin.com)</li>
+                    <li>Go to <strong>Settings</strong> (gear icon) &rarr; <strong>User Settings</strong></li>
+                    <li>Select <strong>Heart Rate Zones</strong></li>
+                    <li>Turn off <strong>Auto Detect</strong> to enable manual entry</li>
+                    <li>Enter the <strong>lower BPM boundary</strong> for each zone from the results above</li>
+                    <li>Tap <strong>Save</strong> &mdash; zones will sync to your device</li>
+                </ol>
+            </details>
+
+            <details>
+                <summary>Directly on the Watch</summary>
+                <ol>
+                    <li>Hold <strong>MENU</strong> (or long-press touchscreen)</li>
+                    <li>Navigate to <strong>Settings</strong> &rarr; <strong>User Profile</strong> &rarr; <strong>Heart Rate Zones</strong></li>
+                    <li>Select <strong>Based On</strong> &rarr; choose <strong>BPM</strong></li>
+                    <li>Enter the lower boundary for each zone</li>
+                    <li>Press <strong>Back</strong> to save</li>
+                </ol>
+            </details>
+
+            <details>
+                <summary>Sport-Specific Zones</summary>
+                <ol>
+                    <li>In Garmin Connect, go to <strong>Device Settings</strong> &rarr; <strong>Activities &amp; Apps</strong></li>
+                    <li>Select the activity (e.g., Running, Cycling)</li>
+                    <li>Tap <strong>Heart Rate Zones</strong></li>
+                    <li>Disable <strong>Use Default Zones</strong></li>
+                    <li>Enter custom boundaries for that sport</li>
+                </ol>
+            </details>
+
+            <div class="note">
+                <strong>Note:</strong> Garmin uses lower-boundary-only semantics &mdash; each zone starts at the value you enter and ends where the next zone begins.
+                Make sure <strong>Auto Detect</strong> is disabled or your custom values will be overwritten.
+                LTHR (Lactate Threshold Heart Rate) zones are a separate Garmin feature and are not covered by this calculator.
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
