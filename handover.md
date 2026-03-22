@@ -22,6 +22,7 @@ Everything is stateless — no database, no sessions, no auth.
 - **Rounding**: BPM values are rounded to integers because Garmin devices don't accept fractional BPM. Tanaka MaxHR is also rounded before zone calculation.
 - **Karvonen validation**: The `/calculate` endpoint returns 400 if `method=karvonen` but `resting_hr` is missing or out of range.
 - **Manual Max HR**: Users can bypass formula calculation and enter a known Max HR (e.g., from a lab test or HR monitor). When `formula=manual`, the `max_hr` field is required (100–230 bpm). The UI conditionally shows the input field when "Manual" is selected.
+- **Generic placeholders**: Input placeholders use generic values (age 30, weight 75kg, height 175cm, etc.) rather than real user data.
 
 ## Zone Definitions
 
