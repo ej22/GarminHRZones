@@ -9,8 +9,8 @@ A single-page web application that calculates heart rate training zones from per
 ```
 app.py              ← Flask app: 3 routes, pure-function calculation logic
 templates/index.html ← Single-page UI: form, results, Garmin instructions
-static/style.css    ← Dark theme, responsive, zone color coding
-static/script.js    ← Form submission via fetch, dynamic results rendering
+static/style.css    ← Dark theme (Syne + Outfit fonts), thermal zone colors, responsive
+static/script.js    ← Form handling, animated Max HR ring, zone spectrum bars, number animations
 ```
 
 Everything is stateless — no database, no sessions, no auth.
@@ -42,11 +42,20 @@ Everything is stateless — no database, no sessions, no auth.
 - Users must disable **Auto Detect** or custom zones get overwritten.
 - **LTHR zones** are a separate Garmin feature not covered here.
 
+## Frontend
+
+- **Fonts**: Syne (display headings) + Outfit (body/UI) via Google Fonts
+- **Zone colors**: Thermal spectrum — cyan (Z1), emerald (Z2), gold (Z3), orange (Z4), red (Z5) — defined as CSS variables `--zone-1` through `--zone-5`
+- **Animations**: SVG ring stroke animates proportionally to Max HR, zone spectrum bars grow with staggered timing, table rows fade in with delays, Max HR number counts up
+- **Layout**: Sticky glassmorphic header, numbered sections (01/02/03), collapsible instruction cards with icons
+- **Responsive**: 4-column form grid collapses to 2 then 1 column; results header stacks vertically on mobile
+
 ## Extending
 
 - **Add a formula**: Add a branch in `calc_max_hr()` in `app.py`, add an option in the HTML `<select>`, update the JS display label and visibility logic in `script.js`.
 - **Change zone definitions**: Edit the `ZONES` list at the top of `app.py`.
-- **Add zone count options** (e.g., 3 or 7 zones): Would require making `ZONES` dynamic and updating the frontend table rendering.
+- **Change zone colors**: Update `--zone-1` through `--zone-5` CSS variables and the matching `.boundary-chip.z*` and `.zone-bar[data-z]` rules.
+- **Add zone count options** (e.g., 3 or 7 zones): Would require making `ZONES` dynamic and updating the frontend table/spectrum rendering.
 
 ## Deployment
 

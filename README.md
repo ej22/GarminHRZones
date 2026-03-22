@@ -6,10 +6,11 @@ A Dockerized web tool that calculates heart rate training zones based on your pe
 
 - **Three Max HR options**: Standard (220 - age), Tanaka (208 - 0.7 × age), or Manual (enter your known Max HR)
 - **Two zone methods**: % of Max HR (simple) and % HRR / Karvonen (accounts for resting HR)
-- **5 training zones** with percentage and BPM ranges
+- **5 training zones** with percentage and BPM ranges, displayed as an animated visual spectrum
 - **Garmin-ready boundaries**: lower-BPM values formatted for direct entry into your device
 - **Garmin setup instructions**: Garmin Connect, on-watch, and sport-specific configuration
 - **BMI calculation** for informational context
+- **Polished UI**: Dark theme with Syne/Outfit typography, animated Max HR ring, thermal zone color coding, and responsive layout
 
 ## Quick Start
 
