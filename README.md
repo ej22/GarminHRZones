@@ -10,7 +10,7 @@ A Dockerized web tool that calculates heart rate training zones based on your pe
 - **Garmin-ready boundaries**: lower-BPM values formatted for direct entry into your device
 - **Garmin setup instructions**: Garmin Connect, on-watch, and sport-specific configuration
 - **BMI calculation** for informational context
-- **Polished UI**: Dark theme with Syne/Outfit typography, animated Max HR ring, thermal zone color coding, and responsive layout
+- **Polished UI**: Dark athletic theme with Barlow Condensed/Barlow typography, animated Max HR ring, thermal zone color coding, card-based mobile layout, and responsive design across 4 breakpoints
 
 ## Quick Start
 

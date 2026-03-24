@@ -9,8 +9,8 @@ A single-page web application that calculates heart rate training zones from per
 ```
 app.py              ← Flask app: 3 routes, pure-function calculation logic
 templates/index.html ← Single-page UI: form, results, Garmin instructions
-static/style.css    ← Dark theme (Syne + Outfit fonts), thermal zone colors, responsive
-static/script.js    ← Form handling, animated Max HR ring, zone spectrum bars, number animations
+static/style.css    ← Dark athletic theme (Barlow Condensed + Barlow fonts), thermal zone colors, 4 responsive breakpoints
+static/script.js    ← Form handling, animated Max HR ring, zone spectrum/cards/table rendering, reduced-motion support
 ```
 
 Everything is stateless — no database, no sessions, no auth.
@@ -45,11 +45,13 @@ Everything is stateless — no database, no sessions, no auth.
 
 ## Frontend
 
-- **Fonts**: Syne (display headings) + Outfit (body/UI) via Google Fonts
+- **Fonts**: Barlow Condensed (display headings, uppercase athletic style) + Barlow (body/UI) via Google Fonts
 - **Zone colors**: Thermal spectrum — cyan (Z1), emerald (Z2), gold (Z3), orange (Z4), red (Z5) — defined as CSS variables `--zone-1` through `--zone-5`
-- **Animations**: SVG ring stroke animates proportionally to Max HR, zone spectrum bars grow with staggered timing, table rows fade in with delays, Max HR number counts up
-- **Layout**: Sticky glassmorphic header, numbered sections (01/02/03), collapsible instruction cards with icons
-- **Responsive**: 4-column form grid collapses to 2 then 1 column; results header stacks vertically on mobile
+- **Animations**: SVG ring stroke animates proportionally to Max HR, zone spectrum bars grow with staggered timing, table rows fade in with delays, Max HR number counts up. All animations respect `prefers-reduced-motion`.
+- **Layout**: Sticky glassmorphic header, numbered sections (01/02/03), collapsible instruction cards, 960px max-width container
+- **Responsive**: 4 breakpoints (768px tablet, 600px mobile, 400px small phone). Form grid collapses 4→2→1 columns. Zone results switch from table (desktop) to card layout (mobile). Boundary chips reflow to 3-col on smallest screens.
+- **Accessibility**: `inputmode` attributes for mobile keyboards, `aria-label`/`aria-live` on key elements, `.sr-only` fieldset legends, visible focus rings, `role="alert"` on errors, 44px minimum touch targets
+- **Loading state**: Calculate button shows spinner during API call, disables interaction
 
 ## Extending
 
